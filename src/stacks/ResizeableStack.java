@@ -1,9 +1,21 @@
 package stacks;
 
+import java.util.EmptyStackException;
+
 public class ResizeableStack <E> {
 
-    private Object[] items = new Object[5];
-    int count;
+
+    private Object[] items;
+
+    private int count;
+
+    public ResizeableStack() {
+        items = new Object[10];
+    }
+
+    public ResizeableStack(int initialCapacity) {
+        this.items = new Object[initialCapacity];
+    }
 
     public void push(E item) {
         if(isFull())
@@ -12,16 +24,16 @@ public class ResizeableStack <E> {
         items[count++] = item;
     }
 
-    public Object pop(){
+    public Object pop() {
         if(isEmpty())
-            throw new IllegalStateException();
+            throw new EmptyStackException();
 
         return items[--count];
     }
 
     public Object peek() {
         if(isEmpty())
-            throw new IllegalStateException();
+            throw new EmptyStackException();
 
         return items[count - 1];
     }
@@ -31,26 +43,17 @@ public class ResizeableStack <E> {
     }
 
     private void resizeStack() {
-        Object[] newItems = new Object[items.length * 2];
+        Object[] newStack = new Object[items.length * 2];
+        for(int i = 0; i < count; i++)
+            newStack[i] = items[i];
 
-        for(int i =0; i< count; i++) {
-            newItems[i] = items[i];
-        }
-        items = newItems;
+        items = newStack;
+
     }
 
     private boolean isFull() {
         return count == items.length;
     }
-
-
-
-
-
-
-
-
-
 
 
     @Override
