@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class ArrayQueue2 <E> {
 
-    private Object[] items = new Object[5];
+    private final Object[] items = new Object[5];
 
     private int first;
     private int last;
@@ -25,19 +25,20 @@ public class ArrayQueue2 <E> {
             throw new IllegalStateException();
 
         var item = items[first];
-        items[first] = null;
+        items[first] = 0;
+
         first = (first + 1) % items.length;
         count--;
 
         return item;
     }
 
-    private boolean isFull() {
-        return count == items.length;
+    public boolean isEmpty() {
+        return count == 0;
     }
 
-    private boolean isEmpty() {
-        return count == 0;
+    private boolean isFull() {
+        return count == items.length;
     }
 
 
