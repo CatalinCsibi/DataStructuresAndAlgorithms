@@ -1,124 +1,102 @@
 package arrays;
 
-import java.util.Stack;
+public class MyArray2 <E>{
 
-public class MyArray2 {
-
-    private int[] items;
-    int count;
+    private Object[] items;
+    private int count;
 
     public MyArray2() {
-        this.items = new int[5];
+        items = new Object[5];
     }
 
-    public MyArray2(int capacity) {
-        this.items = new int[capacity];
+    public MyArray2(int initialCapacity) {
+        items = new Object[initialCapacity];
     }
 
-    public void insert(int item) {
-        if (isFull())
+    public void insert(E value) {
+        if(isFull())
             resizeArray();
-
-        items[count++] = item;
+        
+        items[count++] = value;
     }
-
-    public void removeLast() {
-        if (isEmpty())
-            throw new IllegalStateException();
-
-        count--;
-    }
-
+    
     public void removeFirst() {
-        if (isEmpty())
+        if(isEmpty())
             throw new IllegalStateException();
-
-        for (int i = 0; i < count; i++) {
-            items[i] = items[i + 1];
-            if (i == count - 1) {
-                count--;
-                break;
-            }
-        }
-    }
-
-    public void removeAt(int index) {
-        if (isEmpty() || index > count - 1)
-            throw new IllegalStateException();
-
-        for (int i = index; i < count - 1; i++) {
+        
+        for(int i = 0; i < count-1; i++) {
             items[i] = items[i + 1];
         }
         count--;
     }
-
-
-    public int get(int index) {
-        if (isEmpty() || index >= count)
+    
+    public void removeLast() {
+        if(isEmpty())
+            throw new IllegalStateException();
+        
+        items[--count] = 0;
+    }
+    
+    public boolean isEmpty() {
+        return count == 0;
+    }
+    
+    public void reverseArray() {
+        Object[] reversedArray = new Object[items.length];
+        
+        int index = 0;
+        
+        for(int i = count - 1; i >=0; i--) {
+            reversedArray[index++] = items[i];
+        }
+        items = reversedArray;
+    }
+    
+    public Object get(int index) {
+        if(isOutOfBounds(index))
             throw new IndexOutOfBoundsException();
 
         return items[index];
     }
 
-    public int indexOf(int item) {
-        for (int i = 0; i < count; i++) {
-            if (items[i] == item)
+    public int indexOf(E value) {
+        if(isEmpty())
+            return -1;
+        
+        for(int i = 0; i < count; i++) {
+            if(items[i] == value)
                 return i;
         }
         return -1;
     }
+    
+    public void removeAt(int index) {
+        if(isOutOfBounds(index))
+            throw new IndexOutOfBoundsException();
 
-    public boolean isEmpty() {
-        return count == 0;
-    }
-
-    public int max() {
-        if (isEmpty())
-            throw new IllegalStateException();
-
-        int max = Integer.MIN_VALUE;
-
-        for (int i = 0; i < count; i++) {
-            if (max < items[i])
-                max = items[i];
+        for(int i = index; i < count-1; i++) {
+            items[i] = items[i+1];
         }
-        return max;
     }
 
-    public int min() {
-        if (isEmpty())
-            throw new IllegalStateException();
-
-        int max = Integer.MAX_VALUE;
-
-        for (int i = 0; i < count; i++) {
-            if (max > items[i])
-                max = items[i];
-        }
-        return max;
+    private boolean isOutOfBounds(int index) {
+        return index < 0 || index > count - 1;
     }
-
-    public void reverseArray() {
-        Stack<Integer> stack = new Stack<>();
-        for (int i = 0; i < count; i++)
-            stack.push(items[i]);
-
-
-        for (int i = 0; i < count; i++)
-            items[i] = stack.pop();
-    }
-
+    
     private void resizeArray() {
-        int[] newItems = new int[items.length * 2];
-        for (int i = 0; i < count; i++)
+        Object[] newItems = new Object[items.length * 2];
+        
+        for(int i = 0; i < count; i++) {
             newItems[i] = items[i];
-
+        }
         items = newItems;
     }
-
+    
     private boolean isFull() {
         return count == items.length;
     }
+
+
 
     @Override
     public String toString() {
