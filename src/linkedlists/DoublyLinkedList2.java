@@ -1,58 +1,67 @@
 package linkedlists;
 
-public class DoublyLinkedList2 <T> {
+public class DoublyLinkedList2 <V> {
 
     private Node first;
     private Node last;
 
-    private int size;
-
     private class Node {
+
+        private final V value;
+
         private Node previous;
         private Node next;
 
-        private T value;
-
-        public Node(T value) {
+        public Node(V value) {
             this.value = value;
         }
+
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "value=" + value +
+                    ", previous=" + previous +
+                    ", next=" + next +
+                    '}';
+        }
     }
 
-    public void addLast(T item) {
-        var node = new Node(item);
-        if(first == null) {
+    public void addFirst(V value) {
+        var node = new Node(value);
+        if(isEmpty()) {
             first = last = node;
-        } else {
-            node.previous = last;
-            last.next = node;
-            last = node;
+            return;
         }
-        size++;
+
+        first.previous = node;
+        node.next = first;
+
+        first = node;
     }
 
-    public void addFirst(T item) {
-        var node = new Node(item);
-        if(first == null) {
+    public void addLast(V value) {
+        var node = new Node(value);
+        if(isEmpty()) {
             first = last = node;
-        } else {
-            node.next = first;
-            first.previous = node;
-            first = node;
+            return;
         }
-        size++;
+
+        last.next = node;
+        node.previous = last;
+
+        last = node;
     }
 
-    public void removeLast() {
-        if(isEmpty())
-            throw new IllegalStateException();
+    public boolean contains(V value) {
+        var current = first;
 
-        if(first == last) {
-            first = last = null;
-        } else {
-            last = last.previous;
-            last.next = null;
+        while (current != null) {
+            if(current.value == value)
+                return true;
+
+            current = current.next;
         }
-        size--;
+        return false;
     }
 
     public void removeFirst() {
@@ -61,26 +70,28 @@ public class DoublyLinkedList2 <T> {
 
         if(first == last) {
             first = last = null;
-        } else {
-            first = first.next;
-            first.previous = null;
+            return;
         }
-        size--;
+
+        first = first.next;
+        first.previous = null;
     }
 
-    public boolean contains(T value) {
-        var current = first;
-        while (current != null) {
-            if(current.value == value) {
-                return true;
-            }
-            current = current.next;
+    public void removeLast() {
+        if(isEmpty())
+            throw new IllegalStateException();
+
+        if(first == last) {
+            first = last = null;
+            return;
         }
-        return false;
+
+        last = last.previous;
+        last.next = null;
     }
 
-    public boolean isEmpty(){
-        return size == 0;
+    private boolean isEmpty() {
+        return first == null;
     }
 
     public void printLinkedList() {

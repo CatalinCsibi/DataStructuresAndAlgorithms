@@ -41,7 +41,6 @@ public class Main {
         doublyLinkedList2.removeFirst();
         doublyLinkedList2.removeFirst();
         doublyLinkedList2.removeLast();
-        doublyLinkedList2.removeFirst();
 
         doublyLinkedList2.printLinkedList();
 
