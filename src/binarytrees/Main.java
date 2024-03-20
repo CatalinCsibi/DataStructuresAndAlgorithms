@@ -6,12 +6,13 @@ public class Main {
 
         MyBinaryTree2 myBinaryTree2 = new MyBinaryTree2();
 
-        myBinaryTree2.insert(7);
-        myBinaryTree2.insert(5);
-        myBinaryTree2.insert(9);
         myBinaryTree2.insert(8);
-        myBinaryTree2.insert(10);
+        myBinaryTree2.insert(5);
+        myBinaryTree2.insert(11);
+        myBinaryTree2.insert(9);
+        myBinaryTree2.insert(14);
         myBinaryTree2.insert(4);
+        myBinaryTree2.insert(7);
         myBinaryTree2.insert(6);
         myBinaryTree2.insert(3);
         myBinaryTree2.insert(1);
@@ -43,15 +44,15 @@ public class Main {
 
         MyBinaryTree2 myBinaryTree21 = new MyBinaryTree2();
 
-//               7
-//            5     9
-//           4 6   8 10
-//          3
+//               8
+//            5     11
+//           4 7   9 14
+//          3  6
 //         1
 
-        // traversePreOrder -> 7 5 4 3 1 6 9 8 10
-        // traverseInOrder -> 1 3 4 5 6 7 8 9 10
-        // traversePostOrder -> 1 3 4 6 5 8 10 9 7
+        // traversePreOrder -> 8 5 4 3 1 7 6 11 9 14
+        // traverseInOrder ->
+        // traversePostOrder ->
         myBinaryTree21.insert(7);
         myBinaryTree21.insert(5);
         myBinaryTree21.insert(9);
