@@ -42,6 +42,9 @@ public class Main {
         doublyLinkedList2.removeFirst();
         doublyLinkedList2.removeLast();
 
+        doublyLinkedList2.remove("Bye");
+        doublyLinkedList2.remove("Hello");
+
         doublyLinkedList2.printLinkedList();
 
 

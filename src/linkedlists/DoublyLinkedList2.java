@@ -5,24 +5,15 @@ public class DoublyLinkedList2 <V> {
     private Node first;
     private Node last;
 
+
     private class Node {
 
-        private final V value;
-
-        private Node previous;
+        private V value;
         private Node next;
+        private Node previous;
 
         public Node(V value) {
             this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return "Node{" +
-                    "value=" + value +
-                    ", previous=" + previous +
-                    ", next=" + next +
-                    '}';
         }
     }
 
@@ -61,33 +52,48 @@ public class DoublyLinkedList2 <V> {
 
             current = current.next;
         }
+
         return false;
     }
 
     public void removeFirst() {
-        if(isEmpty())
-            throw new IllegalStateException();
-
         if(first == last) {
             first = last = null;
             return;
         }
 
+        first.next.previous = null;
         first = first.next;
-        first.previous = null;
     }
 
     public void removeLast() {
-        if(isEmpty())
-            throw new IllegalStateException();
-
         if(first == last) {
             first = last = null;
             return;
         }
 
+        last.previous.next = null;
         last = last.previous;
-        last.next = null;
+    }
+
+    public void remove(V value) {
+        if(first == last && first != null && first.value == value) {
+            first = last = null;
+            return;
+        }
+        var current = first;
+
+        while (current != null) {
+            if(current.value == value) {
+                var next = current.next;
+                var previous = current.previous;
+
+                next.previous = previous;
+                previous.next = next;
+                break;
+            }
+            current = current.next;
+        }
     }
 
     private boolean isEmpty() {
