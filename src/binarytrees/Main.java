@@ -52,7 +52,7 @@ public class Main {
 
         // traversePreOrder -> 8 5 4 3 1 7 6 11 9 14
         // traverseInOrder -> 1 3 4 5 6 7 8 9 11 14
-        // traversePostOrder -> 1 3 4 6 7 5 9 14 8
+        // traversePostOrder -> 1 3 4 6 7 5 9 14 11 8
         myBinaryTree21.insert(7);
         myBinaryTree21.insert(5);
         myBinaryTree21.insert(9);
