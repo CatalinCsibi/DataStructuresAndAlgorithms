@@ -96,6 +96,29 @@ public class DoublyLinkedList2 <V> {
         }
     }
 
+
+//   Another option for remove method
+/*    public void remove(V value) {
+        var current = first;
+
+        while (current != null) {
+            if(current.value == value) {
+                if(current == first) {
+                    removeFirst();
+                    break;
+                } else if (current == last) {
+                    removeLast();
+                    break;
+                } else {
+                    current.previous.next = current.next;
+                    current.next.previous = current.previous;
+                    break;
+                }
+            }
+            current = current.next;
+        }
+    }*/
+
     private boolean isEmpty() {
         return first == null;
     }
