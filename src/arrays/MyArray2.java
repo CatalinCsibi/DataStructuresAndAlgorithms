@@ -51,6 +51,19 @@ public class MyArray2 <E>{
         }
         items = reversedArray;
     }
+
+    public void reverseArray2() {
+        if(isEmpty())
+            throw new IllegalStateException();
+
+        int last = count - 1;
+
+        for(int i = 0; i < count / 2; i++) {
+            Object firstItem = items[i];
+            items[i] = items[last];
+            items[last--] = firstItem;
+        }
+    }
     
     public Object get(int index) {
         if(isOutOfBounds(index))
