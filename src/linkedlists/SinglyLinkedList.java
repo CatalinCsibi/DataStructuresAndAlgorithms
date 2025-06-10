@@ -1,5 +1,7 @@
 package linkedlists;
 
+import java.util.Stack;
+
 public class SinglyLinkedList<E> {
 
     private Node first;
@@ -117,6 +119,51 @@ public class SinglyLinkedList<E> {
     }
     public boolean isEmpty(){
         return size == 0;
+    }
+
+    public void printLinkedList() {
+        if (isEmpty())
+            throw new IllegalStateException();
+
+        var node = first;
+        while (node != null) {
+            System.out.print(node.value + " ");
+            node = node.next;
+        }
+        System.out.println();
+    }
+
+    public SinglyLinkedList<E> reverse() {
+        Stack<E> stack = new Stack<>();
+        var node = first;
+            for (int i = 0; i < size; i++) {
+                if(node != null) {
+                    stack.add(node.value);
+                }
+                node = node.next;
+        }
+        SinglyLinkedList<E> singlyLinkedList = new SinglyLinkedList<>();
+            while (!stack.isEmpty()) {
+                singlyLinkedList.addLast(stack.pop());
+            }
+        return singlyLinkedList;
+    }
+
+    public void reverse2() {
+        if(first.next == null) {
+            return;
+        }
+        var head = this.first;
+        var second = head.next;
+        while (second != null) {
+            var temp = second.next;
+            second.next = head;
+            head = second;
+            second = temp;
+        }
+        this.first.next = null;
+        this.first = head;
+
     }
 
 
