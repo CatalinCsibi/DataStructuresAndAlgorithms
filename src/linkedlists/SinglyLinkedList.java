@@ -122,9 +122,6 @@ public class SinglyLinkedList<E> {
     }
 
     public void printLinkedList() {
-        if (isEmpty())
-            throw new IllegalStateException();
-
         var node = first;
         while (node != null) {
             System.out.print(node.value + " ");
@@ -150,10 +147,10 @@ public class SinglyLinkedList<E> {
     }
 
     public void reverse2() {
-        if(first.next == null) {
+        if(first == null || first.next == null)
             return;
-        }
-        var head = this.first;
+
+        var head = first;
         var second = head.next;
         while (second != null) {
             var temp = second.next;
@@ -163,8 +160,5 @@ public class SinglyLinkedList<E> {
         }
         this.first.next = null;
         this.first = head;
-
     }
-
-
 }
