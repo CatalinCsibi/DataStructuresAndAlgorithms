@@ -61,6 +61,83 @@ public class MyBinaryTree2 {
         return false;
     }
 
+    public boolean remove(int value) {
+        if (root == null) return false;
+
+        Node currentNode = root;
+        Node parentNode = null;
+
+        while (currentNode != null) {
+            if (value < currentNode.value) {
+                parentNode = currentNode;
+                currentNode = currentNode.leftChild;
+            } else if (value > currentNode.value) {
+                parentNode = currentNode;
+                currentNode = currentNode.rightChild;
+            } else {
+                // Node found: perform removal
+
+                // Option 1: No right child
+                if (currentNode.rightChild == null) {
+                    if (parentNode == null) {
+                        root = currentNode.leftChild;
+                    } else {
+                        if (currentNode.value < parentNode.value) {
+                            parentNode.leftChild = currentNode.leftChild;
+                        } else {
+                            parentNode.rightChild = currentNode.leftChild;
+                        }
+                    }
+
+                    // Option 2: Right child with no left child
+                } else if (currentNode.rightChild.leftChild == null) {
+                    currentNode.rightChild.leftChild = currentNode.leftChild;
+                    if (parentNode == null) {
+                        root = currentNode.rightChild;
+                    } else {
+                        if (currentNode.value < parentNode.value) {
+                            parentNode.leftChild = currentNode.rightChild;
+                        } else {
+                            parentNode.rightChild = currentNode.rightChild;
+                        }
+                    }
+
+                    // Option 3: Right child with a left child
+                } else {
+                    // Find the leftmost child in the right subtree
+                    Node leftmost = currentNode.rightChild.leftChild;
+                    Node leftmostParent = currentNode.rightChild;
+
+                    while (leftmost.leftChild != null) {
+                        leftmostParent = leftmost;
+                        leftmost = leftmost.leftChild;
+                    }
+
+                    // Parent's left subtree becomes leftmost's right subtree
+                    leftmostParent.leftChild = leftmost.rightChild;
+
+                    // Replace currentNode with leftmost
+                    leftmost.leftChild = currentNode.leftChild;
+                    leftmost.rightChild = currentNode.rightChild;
+
+                    if (parentNode == null) {
+                        root = leftmost;
+                    } else {
+                        if (currentNode.value < parentNode.value) {
+                            parentNode.leftChild = leftmost;
+                        } else {
+                            parentNode.rightChild = leftmost;
+                        }
+                    }
+                }
+                return true;
+            }
+        }
+
+        return false; // Node not found
+    }
+
+
     public void traversePreOrder() {
         traversePreOrder(root);
     }
