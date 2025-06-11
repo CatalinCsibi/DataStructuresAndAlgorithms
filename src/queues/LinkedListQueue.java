@@ -18,7 +18,7 @@ public class LinkedListQueue <V>{
         }
     }
 
-    public void push(V value) {
+    public void enqueue(V value) {
         var node = new Node(value);
         if(first == null) {
             first = last = node;
@@ -29,9 +29,9 @@ public class LinkedListQueue <V>{
         size++;
     }
 
-    public V pop() {
+    public V dequeue() {
         if(isEmpty())
-            throw new IllegalStateException("Queue is empty, can't pop last item");
+            throw new IllegalStateException("Queue is empty, can't dequeue last item");
 
         V value = first.value;
         first = first.next;
@@ -40,12 +40,6 @@ public class LinkedListQueue <V>{
         return value;
     }
 
-    public V peek() {
-        if(isEmpty())
-            throw new IllegalStateException("Queue is empty, can't peek last item");
-
-        return first.value;
-    }
 
     public boolean isEmpty() {
         return size == 0;
