@@ -1,7 +1,5 @@
 package queues;
 
-import stacks.LinkedListStack;
-
 public class LinkedListQueue <V>{
 
     private Node first;
