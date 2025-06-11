@@ -42,4 +42,18 @@ public class LinkedListQueue <V>{
     public boolean isEmpty() {
         return size == 0;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
+        var current = first;
+        while (current != null) {
+            stringBuilder.append(current.value).append(", ");
+            current = current.next;
+
+        }
+        String itemsAsString = stringBuilder.toString();
+        return itemsAsString.substring(0, itemsAsString.length() - 2) + "]";
+    }
 }
