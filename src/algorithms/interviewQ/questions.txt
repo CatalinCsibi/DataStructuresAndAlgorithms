@@ -1,0 +1,23 @@
+#1 - Sort 10 schools around your house by distance: Insertion Sort
+Because the dataset is very small (only 10 items), insertion sort is efficient and simple. It performs well on small inputs and is even faster if the data is almost sorted.
+
+#2 - eBay sorts listings by the current Bid amount: Radix or Counting Sort
+Bids are integer numbers within a limited range. Radix and counting sorts run in linear time for integer keys and don’t rely on comparisons, so they can be much faster than comparison-based sorts for this kind of data.
+
+#3 - Sort scores on ESPN: Quick Sort
+Scores can have decimals and vary in format, so we need a flexible and efficient comparison-based sort. Quick sort is generally very fast in practice and uses less memory compared to merge sort.
+
+#4 - Massive database (can't fit all into memory) needs to sort past year's user data: Merge Sort
+Merge sort works well with external sorting (sorting data on disk) because it processes data in chunks and merges sorted sublists efficiently, and its O(n log n) worst-case time is reliable.
+
+#5 - Almost sorted Udemy review data needs to update and add 2 new reviews: Insertion Sort
+Since the data is nearly sorted and only a few new items are added, insertion sort will quickly insert those new reviews with minimal operations.
+
+#6 - Temperature Records for the past 50 years in Canada: Radix or Counting Sort (Quick Sort if decimal places)
+Temperatures are typically integers within a small range (e.g., -50 to 50), making radix or counting sort very efficient. If temperatures include decimals, quick sort is better because counting/radix sorts handle integers, not floats.
+
+#7 - Large username database needs to be sorted. Data is very random: Quick Sort
+Quick sort is efficient for large, random datasets and is in-place, which saves memory. With a good pivot strategy, its average performance is excellent.
+
+#8 - You want to teach sorting: Bubble Sort
+Bubble sort is conceptually simple and easy to visualize, making it perfect for teaching the basics of sorting and algorithmic thinking, even if it’s inefficient for real use.

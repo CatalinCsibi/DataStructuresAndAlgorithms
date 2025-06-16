@@ -21,39 +21,29 @@ public class Main {
 
     }
 
-    public static int firstRecurringCharacter(int [] numbers) {
-        Set<Integer> set = new HashSet<>();
-        for (int number : numbers) {
-            if (set.contains(number)) {
-                return number;
-            } else {
-                set.add(number);
-            }
-        }
-        return -1;
-    }
-
-    public static int factorialRecursive(int number) {
+    // Factorial algorithm
+    private static int factorialRecursive(int number) {
         if(number == 2)
             return 2;
 
         return number * factorialRecursive(number -1);
     }
 
-    public static int factorialIterative(int number) {
+    private static int factorialIterative(int number) {
         for(int i = number-1; i > 0; i--) {
             number = number * i;
         }
         return number;
     }
 
-    public static int fibonacciRecursive(int n) { // O(2^n)
+    //Fibonacci algorithm
+    private static int fibonacciRecursive(int n) { // O(2^n)
         if (n < 2)
             return n;
         return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
     }
 
-    public static long fibonacciRecursive2(int n) { // O(n)
+    private static long fibonacciRecursive2(int n) { // O(n)
         if (n < 2)
             return n;
 
@@ -66,7 +56,7 @@ public class Main {
     }
 
 
-    public static int fibonacciIterative(int n) { // O(n)
+    private static int fibonacciIterative(int n) { // O(n)
         if (n < 2) return n;
 
         int[] arr = new int[n + 1];
@@ -80,17 +70,9 @@ public class Main {
         return arr[n];
     }
 
-    public static void countDown(int n) {
-        if (n == 0) {
-            System.out.println("Done!");
-            return;
-        }
-        System.out.println(n);
-        countDown(n - 1); // Recursive call
-    }
 
-
-    public static String reverseStringRecursive(String s) {
+    // Reverse a string algorithm
+    private static String reverseStringRecursive(String s) {
         if (s.isEmpty()) {
             return "";
         } else {
@@ -99,12 +81,33 @@ public class Main {
     }
 
 
-    public static String reverseStringIterative(String s) {
+    private static String reverseStringIterative(String s) {
         StringBuilder stringBuilder = new StringBuilder();
         char[] chars = s.toCharArray();
         for(int i = chars.length-1; i >=0; i--) {
             stringBuilder.append(chars[i]);
         }
         return stringBuilder.toString();
+    }
+
+    private static void countDown(int n) {
+        if (n == 0) {
+            System.out.println("Done!");
+            return;
+        }
+        System.out.println(n);
+        countDown(n - 1); // Recursive call
+    }
+
+    private static int firstRecurringCharacter(int [] numbers) {
+        Set<Integer> set = new HashSet<>();
+        for (int number : numbers) {
+            if (set.contains(number)) {
+                return number;
+            } else {
+                set.add(number);
+            }
+        }
+        return -1;
     }
 }
