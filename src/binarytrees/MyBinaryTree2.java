@@ -1,6 +1,11 @@
 package binarytrees;
 
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class MyBinaryTree2 {
 
     private Node root;
@@ -175,6 +180,25 @@ public class MyBinaryTree2 {
         traversePostOrder(root.leftChild);
         traversePostOrder(root.rightChild);
         System.out.println(root.value);
+    }
+
+    public List<Integer> breadthFirstSearch() {
+        List<Integer> list = new ArrayList<>();
+        if (root == null) return list;
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node currentNode = queue.poll();
+            System.out.println(currentNode.value);
+            list.add(currentNode.value);
+
+            if (currentNode.leftChild != null) queue.add(currentNode.leftChild);
+            if (currentNode.rightChild != null) queue.add(currentNode.rightChild);
+        }
+
+        return list;
     }
 
     public boolean isBinarySearchTree() {
