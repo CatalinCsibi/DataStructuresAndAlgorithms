@@ -11,7 +11,7 @@ public class InsertionSort {
         }
     }
 
-    public static void insertionSort(int[] array) {
+    private static void insertionSort(int[] array) {
         int length = array.length;
 
         for (int i = 1; i < length; i++) { // Start from the second element
@@ -25,6 +25,19 @@ public class InsertionSort {
             }
             // Insert the element at the correct position
             array[j + 1] = current;
+        }
+    }
+
+    private static void insertionSort2(int[] array) {
+        for(int i = 1; i < array.length; i++) {
+            int current = array[i];
+            int j = i -1;
+
+            while(j >= 0 && array[j] > current) {
+                array[j+1] = array[j];
+                j--;
+            }
+            array[j+1] = current;
         }
     }
 }
