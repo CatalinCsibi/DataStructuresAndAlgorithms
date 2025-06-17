@@ -29,6 +29,25 @@ public class InsertionSort {
     }
 
     private static void insertionSort2(int[] array) {
+
+        // 4 ,3, 5, 1, 7
+
+        // current = 3 ; j = 0;
+        // 0>=0 && 4 > 3 -> array[1] = 4 -> j = -1;
+        // array[0+1] = 3 -> 3, 4, 5, 1, 7
+
+        // current = 5; j = 1;
+        // 1 >= 0 && 4 > 5 -> false -> array[2] = 5;  -> 3, 4, 5, 1, 7
+
+        // current = 1; j = 2
+        // 2 >=0 && 5 > 1 -> array[3] = 5 -> j = 1
+        // 1 >=0 && 4 > 1 -> array[2] = 4 -> j = 0;
+        // 0 >=0 && 3 > 1 -> array[1] = 3 -> j = -1
+        // array[-1 + 1] = 1 -> 1, 3, 4, 5, 7
+
+        //current = 7; j = 3
+        // 3 >= 0 && 5 > 7 -> false -> array[3+1] = 7
+
         for(int i = 1; i < array.length; i++) {
             int current = array[i];
             int j = i -1;
