@@ -20,6 +20,11 @@ public class InsertionSort {
         }
     }
 
+
+//    "apple".compareTo("banana")  // returns negative (-1 or other negative number)
+//    "banana".compareTo("apple")  // returns positive (+1 or other positive number)
+//    "apple".compareTo("apple")   // returns 0
+
     private static void insertionSortStrings(String[] strings) {
         for(int i = 1; i < strings.length; i++) {
             String current = strings[i];
