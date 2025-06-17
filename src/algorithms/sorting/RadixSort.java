@@ -1,9 +1,44 @@
 package algorithms.sorting;
 
+/*
+Initial array:
+        [170, 45, 75, 90, 802, 24, 2, 66]
+
+Step 1: Sort by least significant digit (units place)
+Digits:       0   5   5   0   2   4   2   6
+Sorted array: [170, 90, 802, 2, 24, 45, 75, 66]
+
+Step 2: Sort by next digit (tens place)
+Digits:       7   9   0   0   2   4   7   6
+Sorted array: [802, 2, 24, 45, 66, 170, 75, 90]
+
+Step 3: Sort by next digit (hundreds place)
+Digits:       8   0   0   0   0   1   0   0
+Sorted array: [2, 24, 45, 66, 75, 90, 170, 802]
+
+Result: Fully sorted array
+[2, 24, 45, 66, 75, 90, 170, 802]
+
+Explanation:
+
+At each step, we sort numbers based on the digit in a particular place, starting from the rightmost digit.
+
+We use a stable sort at each step (like counting sort) so that the order of elements with the same digit stays consistent.
+
+After sorting by the units place, we move on to the tens place, then hundreds, and so forth until all digits are processed.
+
+This way, numbers gradually get sorted from least significant digit to most significant digit, resulting in a fully
+sorted array at the end.
+*/
+
 public class RadixSort {
 
     public static void main(String[] args) {
         int[] array = {170, 45, 75, 90, 802, 24, 2, 66};
+
+        // 0 5 5 0 2 4 2 6 -> 170 90 802 2 24  45  75  66
+        // 7 9 0 0 2 4 7 6 -> 802 2 24 45 66 170 75 90
+        // 8 0 0 0 0 1 0 0 -> 2 24 45 66 75 90 170 802
 
         System.out.println("Before sorting:");
         for (int num : array) System.out.print(num + " ");
