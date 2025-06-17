@@ -12,6 +12,29 @@ public class SelectionSort {
         }
         System.out.println();
 
+        String[] strings = {"Hello", "Bye", "Ciao", "Goodnight", "Goodbye", };
+        selectionSortStrings(strings);
+
+        for(String s : strings) {
+            System.out.print(s + " ");
+        }
+
+    }
+
+
+    private static void selectionSortStrings(String[] strings) {
+        for(int i = 0; i< strings.length-1; i++) {
+            int min = i;
+            String temp = strings[i];
+
+            for(int j = i + 1; j < strings.length; j++) {
+                if(strings[j].compareTo(strings[min]) < 0) {
+                    min = j;
+                }
+            }
+            strings[i] = strings[min];
+            strings[min] = temp;
+        }
     }
 
 

@@ -9,7 +9,30 @@ public class InsertionSort {
         for (int num : numbers) {
             System.out.print(num + " ");
         }
+
+        System.out.println();
+
+        String[] strings = {"Hello", "Bye", "Ciao", "Goodnight", "Goodbye", };
+        insertionSortStrings(strings);
+
+        for(String s : strings) {
+            System.out.print(s + " ");
+        }
     }
+
+    private static void insertionSortStrings(String[] strings) {
+        for(int i = 1; i < strings.length; i++) {
+            String current = strings[i];
+            int j = i-1;
+
+            while (j >= 0 && strings[j].compareTo(current) > 0) {
+                strings[j+1] = strings[j];
+                j--;
+            }
+            strings[j+1] = current;
+        }
+    }
+
 
     private static void insertionSort(int[] array) {
         int length = array.length;
