@@ -81,21 +81,6 @@ public class MyHashTable2<K, V> {
         return key.hashCode() % entries.length;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
