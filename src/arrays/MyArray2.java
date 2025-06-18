@@ -81,24 +81,6 @@ public class MyArray2 <E>{
         items = newItems;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
