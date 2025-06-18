@@ -14,6 +14,10 @@ public class Main {
         myArray2.insert(5);
         myArray2.insert(6);
         myArray2.insert(7);
+        myArray2.insert(8);
+        myArray2.insert(9);
+        myArray2.insert(10);
+        myArray2.insert(11);
 
         myArray2.removeLast();
         myArray2.removeFirst();
@@ -23,9 +27,9 @@ public class Main {
 
         myArray2.reverseArray();
 
-        myArray2.removeFirst();
-        myArray2.removeLast();
-        myArray2.removeLast();
+//        myArray2.removeFirst();
+//        myArray2.removeLast();
+//        myArray2.removeLast();
 
 
         System.out.println(myArray2);
