@@ -5,36 +5,36 @@ public class Main {
 
     public static void main(String[] args) {
 
-        MyArray<Integer> myArray2 = new MyArray<>(5);
+        MyArray<Integer> myArray = new MyArray<>(5);
 
-        myArray2.insert(1);
-        myArray2.insert(2);
-        myArray2.insert(3);
-        myArray2.insert(4);
-        myArray2.insert(5);
-        myArray2.insert(6);
-        myArray2.insert(7);
-        myArray2.insert(8);
-        myArray2.insert(9);
-        myArray2.insert(10);
-        myArray2.insert(11);
+        myArray.insert(1);
+        myArray.insert(2);
+        myArray.insert(3);
+        myArray.insert(4);
+        myArray.insert(5);
+        myArray.insert(6);
+        myArray.insert(7);
+        myArray.insert(8);
+        myArray.insert(9);
+        myArray.insert(10);
+        myArray.insert(11);
 
-        myArray2.removeLast();
-        myArray2.removeFirst();
-        myArray2.removeFirst();
+        myArray.removeLast();
+        myArray.removeFirst();
+        myArray.removeFirst();
 
-        System.out.println(myArray2.indexOf(5));
-        myArray2.removeAt(2);
-        System.out.println(myArray2);
+        System.out.println(myArray.indexOf(5));
+        myArray.removeAt(2);
+        System.out.println(myArray);
 
-        myArray2.reverseArray();
+        myArray.reverseArray();
 
-//        myArray2.removeFirst();
-//        myArray2.removeLast();
-//        myArray2.removeLast();
+//        myArray.removeFirst();
+//        myArray.removeLast();
+//        myArray.removeLast();
 
 
-        System.out.println(myArray2);
+        System.out.println(myArray);
 
 
 
