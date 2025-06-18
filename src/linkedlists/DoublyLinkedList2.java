@@ -91,7 +91,6 @@ public class DoublyLinkedList2 <V> {
             }
         }
         size--;
-
     }
 
     public V getFirst() {
