@@ -29,9 +29,9 @@ public class Main {
 
         myArray.reverseArray();
 
-//        myArray.removeFirst();
-//        myArray.removeLast();
-//        myArray.removeLast();
+        myArray.removeFirst();
+        myArray.removeLast();
+        myArray.removeLast();
 
 
         System.out.println(myArray);
