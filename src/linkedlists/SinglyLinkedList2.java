@@ -1,5 +1,7 @@
 package linkedlists;
 
+import java.util.Stack;
+
 public class SinglyLinkedList2 <V>{
 
     private Node first;
@@ -134,6 +136,39 @@ public class SinglyLinkedList2 <V>{
         return size == 0;
     }
 
+    public void reverseLinkedListUsingStack() {
+        if(isEmpty())
+            throw new IllegalStateException();
+
+        Stack<V> stack = new Stack<>();
+        var current = first;
+        while (current != null) {
+            stack.push(current.value);
+            current= current.next;
+        }
+        current = first;
+        while (current != null &&!stack.isEmpty()) {
+            current.value = stack.pop();
+            current= current.next;
+        }
+    }
+
+    public void reverseLinkedList() {
+        if(first == null || first.next == null)
+            return;
+
+        var head = first;
+        var second = head.next;
+        while (second != null) {
+            var temp = second.next;
+            second.next = head;
+            head = second;
+            second = temp;
+        }
+        this.first.next = null;
+        this.first = head;
+    }
+
     public void printLinkedList() {
         if(isEmpty())
             throw new IllegalStateException();
@@ -143,6 +178,7 @@ public class SinglyLinkedList2 <V>{
             System.out.print(current.value + " ");
             current = current.next;
         }
+        System.out.println();
     }
 
     public static void main(String[] args) {
@@ -161,6 +197,12 @@ public class SinglyLinkedList2 <V>{
 
         System.out.println(singlyLinkedList2.indexOf(4));
         System.out.println(singlyLinkedList2.get(1));
+
+        singlyLinkedList2.addLast(7);
+
+        singlyLinkedList2.printLinkedList();
+
+        singlyLinkedList2.reverseLinkedList();
 
         singlyLinkedList2.printLinkedList();
 
