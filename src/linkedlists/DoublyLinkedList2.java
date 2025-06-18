@@ -124,6 +124,25 @@ public class DoublyLinkedList2 <V> {
         return first == null;
     }
 
+    public void reverseLinkedList() {
+        if (isEmpty())
+            throw new IllegalStateException();
+
+        var current = first;
+        while (current != null) {
+            var temp = current.next;
+            current.next = current.previous;   // Swap next and previous
+            current.previous = temp;           // Swap previous and next
+            current = temp;                    // Move to the next node (which was the original next)
+        }
+
+        // Swap first and last pointers
+        var temp = first;
+        first = last;
+        last = temp;
+    }
+
+
 
     public void printLinkedList() {
         if (isEmpty())

@@ -29,6 +29,10 @@ public class Main {
 
         doublyLinkedList2.printLinkedList();
 
+        doublyLinkedList2.reverseLinkedList();
+
+        doublyLinkedList2.printLinkedList();
+
 
     }
 }
