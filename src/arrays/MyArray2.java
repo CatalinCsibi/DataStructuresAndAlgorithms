@@ -38,6 +38,23 @@ public class MyArray2 <E>{
         items[--size] = null;
     }
 
+    public void removeAt(int index) {
+        if(isEmpty())
+            throw new IllegalStateException("Array is empty, Cannot remove item ar index " + index);
+        for(int i = index; i < items.length-1; i++) {
+            items[index++] = items[i+1];
+        }
+        size--;
+    }
+
+    public int indexOf(Object item) {
+        for(int i = 0; i < size; i++) {
+            if(items[i] == item)
+                return i;
+        }
+        return -1;
+    }
+
     public void reverseArray() {
         Object[] newItems = new Object[items.length];
         int index = 0;
@@ -46,6 +63,7 @@ public class MyArray2 <E>{
         }
         items= newItems;
     }
+
 
     public boolean isEmpty() {
         return size == 0;

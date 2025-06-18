@@ -23,6 +23,8 @@ public class Main {
         myArray2.removeFirst();
         myArray2.removeFirst();
 
+        System.out.println(myArray2.indexOf(5));
+        myArray2.removeAt(2);
         System.out.println(myArray2);
 
         myArray2.reverseArray();
