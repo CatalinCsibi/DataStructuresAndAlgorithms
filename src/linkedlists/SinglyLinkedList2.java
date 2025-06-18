@@ -1,0 +1,168 @@
+package linkedlists;
+
+public class SinglyLinkedList2 <V>{
+
+    private Node first;
+    private Node last;
+    private int size;
+
+    private class Node {
+
+        private V value;
+        private Node next;
+
+        public Node(V value) {
+            this.value = value;
+        }
+    }
+
+    public void addFirst(V value) {
+        var node = new Node(value);
+        if(isEmpty()) {
+            first = last = node;
+        } else {
+            node.next = first;
+            first = node;
+        }
+        size++;
+    }
+
+    public void addLast(V value) {
+        var node = new Node(value);
+        if(isEmpty()) {
+            first = last = node;
+        } else {
+            var current = first;
+            while (current != null) {
+                if(current.next == null) {
+                    current.next = node;
+                    last = node;
+                    break;
+                }
+                current = current.next;
+            }
+        }
+        size++;
+    }
+
+    public void removeFirst() {
+        if(isEmpty())
+            throw new IllegalStateException();
+
+        if(first == last) {
+            first = last = null;
+        } else {
+            first = first.next;
+        }
+        size--;
+    }
+
+    public void removeLast() {
+        if(isEmpty())
+            throw new IllegalStateException();
+
+        if(first == last) {
+            first = last = null;
+        } else {
+            var node = first;
+            while (true) {
+                if(node.next == last) {
+                    last = node;
+                    node.next = null;
+                    break;
+                }
+                node = node.next;
+            }
+        }
+        size--;
+    }
+
+    public boolean contains(V value) {
+        if(last != null && last.value == value)
+            return true;
+
+        var node = first;
+        while (node != null) {
+            if(node.value == value)
+                return true;
+
+            node = node.next;
+        }
+        return false;
+    }
+
+    public int indexOf(V value) {
+        if(last != null && last.value == value)
+            return size-1;
+
+        int index = 0;
+        var current = first;
+        while (current != null) {
+            if(current.value == value)
+                return index;
+
+            current = current.next;
+            index++;
+        }
+        return -1;
+    }
+
+    public V get(int index) {
+        if(index >= size)
+            throw new IndexOutOfBoundsException();
+
+        if(index == size-1) {
+            return last.value;
+        }
+        var current = first;
+        int count = 0;
+        while (current != null) {
+            if(count == index) {
+                return current.value;
+            }
+            current=current.next;
+            count++;
+        }
+        throw new IllegalStateException();
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public void printLinkedList() {
+        if(isEmpty())
+            throw new IllegalStateException();
+
+        var current = first;
+        while (current != null) {
+            System.out.print(current.value + " ");
+            current = current.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        SinglyLinkedList2<Integer> singlyLinkedList2 = new SinglyLinkedList2<>();
+
+        singlyLinkedList2.addFirst(4);
+        singlyLinkedList2.addFirst(5);
+        singlyLinkedList2.addLast(6);
+        singlyLinkedList2.addLast(8);
+        singlyLinkedList2.addFirst(10);
+        singlyLinkedList2.addLast(11);
+
+        singlyLinkedList2.removeFirst();
+        singlyLinkedList2.removeLast();
+        singlyLinkedList2.removeLast();
+
+        System.out.println(singlyLinkedList2.indexOf(4));
+        System.out.println(singlyLinkedList2.get(1));
+
+        singlyLinkedList2.printLinkedList();
+
+    }
+}
