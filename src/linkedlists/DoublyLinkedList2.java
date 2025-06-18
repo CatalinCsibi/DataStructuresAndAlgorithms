@@ -4,11 +4,13 @@ public class DoublyLinkedList2 <V> {
 
     private Node first;
     private Node last;
+    private int size;
+
 
 
     private class Node {
 
-        private V value;
+        private final V value;
         private Node next;
         private Node previous;
 
@@ -19,109 +21,100 @@ public class DoublyLinkedList2 <V> {
 
     public void addFirst(V value) {
         var node = new Node(value);
-        if(isEmpty()) {
+        if(isEmpty()){
             first = last = node;
-            return;
+        } else {
+            first.previous = node;
+            node.next = first;
+            first = node;
         }
-
-        first.previous = node;
-        node.next = first;
-
-        first = node;
+        size++;
     }
 
     public void addLast(V value) {
         var node = new Node(value);
-        if(isEmpty()) {
+        if(isEmpty()){
             first = last = node;
-            return;
+        } else {
+            last.next = node;
+            node.previous = last;
+            last = node;
         }
 
-        last.next = node;
-        node.previous = last;
+        size++;
+    }
 
-        last = node;
+    public void removeFirst() {
+        if(isEmpty())
+            throw new IllegalStateException();
+
+        if(first == last) {
+            first = last = null;
+        } else {
+            first = first.next;
+            first.previous = null;
+        }
+        size--;
+    }
+
+    public void removeLast() {
+        if(isEmpty())
+            throw new IllegalStateException();
+
+        if(first == last) {
+            first = last = null;
+        } else {
+            last = last.previous;
+            last.next = null;
+        }
+        size--;
+    }
+
+    public void remove(V value) {
+        if(isEmpty())
+            throw new IllegalStateException();
+
+        if(first == last && first.value == value){
+            first = last = null;
+        } else if(last.value == value) {
+            removeLast();
+        } else {
+            var current = first.next;
+            while (current != null) {
+                if(current.value == value) {
+                    var next = current.next;
+                    var previous = current.previous;
+
+                    next.previous = previous;
+                    previous.next = next;
+                    break;
+                }
+                current = current.next;
+            }
+        }
+        size--;
+
     }
 
     public boolean contains(V value) {
         var current = first;
-
         while (current != null) {
             if(current.value == value)
                 return true;
-
             current = current.next;
         }
-
         return false;
     }
 
-    public void removeFirst() {
-        if(first == last) {
-            first = last = null;
-            return;
-        }
-
-        first.next.previous = null;
-        first = first.next;
-    }
-
-    public void removeLast() {
-        if(first == last) {
-            first = last = null;
-            return;
-        }
-
-        last.previous.next = null;
-        last = last.previous;
-    }
-
-    public void remove(V value) {
-        if(first == last && first != null && first.value == value) {
-            first = last = null;
-            return;
-        }
-        var current = first;
-
-        while (current != null) {
-            if(current.value == value) {
-                var next = current.next;
-                var previous = current.previous;
-
-                next.previous = previous;
-                previous.next = next;
-                break;
-            }
-            current = current.next;
-        }
+    public int size() {
+        return size;
     }
 
 
-//   Another option for remove method
-/*    public void remove(V value) {
-        var current = first;
-
-        while (current != null) {
-            if(current.value == value) {
-                if(current == first) {
-                    removeFirst();
-                    break;
-                } else if (current == last) {
-                    removeLast();
-                    break;
-                } else {
-                    current.previous.next = current.next;
-                    current.next.previous = current.previous;
-                    break;
-                }
-            }
-            current = current.next;
-        }
-    }*/
-
-    private boolean isEmpty() {
+    public boolean isEmpty() {
         return first == null;
     }
+
 
     public void printLinkedList() {
         if (isEmpty())
