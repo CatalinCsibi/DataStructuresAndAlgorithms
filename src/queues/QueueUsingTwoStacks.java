@@ -29,5 +29,29 @@ public class QueueUsingTwoStacks <E> {
         }
     }
 
+    public static void main(String[] args) {
+        QueueUsingTwoStacks<String> queueUsingTwoStacks = new QueueUsingTwoStacks<>();
+
+        queueUsingTwoStacks.enqueue("first");
+        queueUsingTwoStacks.enqueue("second");
+        queueUsingTwoStacks.enqueue("third");
+        queueUsingTwoStacks.enqueue("fourth");
+        queueUsingTwoStacks.enqueue("fifth");
+        queueUsingTwoStacks.enqueue("sixth");
+        queueUsingTwoStacks.enqueue("seventh");
+        queueUsingTwoStacks.enqueue("eighth");
+        queueUsingTwoStacks.enqueue("ninth");
+
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
+    }
+
 
 }
