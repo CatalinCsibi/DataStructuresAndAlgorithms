@@ -6,8 +6,6 @@ public class DoublyLinkedList2 <V> {
     private Node last;
     private int size;
 
-
-
     private class Node {
 
         private final V value;
@@ -94,6 +92,18 @@ public class DoublyLinkedList2 <V> {
         }
         size--;
 
+    }
+
+    public V getFirst() {
+        if(isEmpty())
+            throw new IllegalStateException();
+        return first.value;
+    }
+
+    public V getLast() {
+        if(isEmpty())
+            throw new IllegalStateException();
+        return last.value;
     }
 
     public boolean contains(V value) {

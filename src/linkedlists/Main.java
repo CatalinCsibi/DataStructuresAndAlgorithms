@@ -15,9 +15,11 @@ public class Main {
         doublyLinkedList2.addLast("Bye");
         doublyLinkedList2.addLast("Ciao");
 
+        System.out.println(doublyLinkedList2.size());
         System.out.println(doublyLinkedList2.contains("Ciao"));
+        System.out.println(doublyLinkedList2.getFirst());
+        System.out.println(doublyLinkedList2.getLast());
 
-        doublyLinkedList2.removeFirst();
         doublyLinkedList2.removeFirst();
         doublyLinkedList2.removeLast();
 
