@@ -5,7 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        MyArray2<Integer> myArray2 = new MyArray2<>(5);
+        MyArray<Integer> myArray2 = new MyArray<>(5);
 
         myArray2.insert(1);
         myArray2.insert(2);
