@@ -2,20 +2,20 @@ package binarytrees;
 
 import java.util.*;
 
-class Node {
-    int value;
-    Node left;
-    Node right;
-
-    Node(int value) {
-        this.value = value;
-        left = null;
-        right = null;
-    }
-}
-
 public class MyBinaryTree3{
     Node root;
+
+    class Node {
+        int value;
+        Node left;
+        Node right;
+
+        Node(int value) {
+            this.value = value;
+            left = null;
+            right = null;
+        }
+    }
 
     public MyBinaryTree3() {
         this.root = null;
