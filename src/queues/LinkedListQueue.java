@@ -56,4 +56,22 @@ public class LinkedListQueue <V>{
         String itemsAsString = stringBuilder.toString();
         return itemsAsString.substring(0, itemsAsString.length() - 2) + "]";
     }
+
+
+    public static void main(String[] args) {
+
+        LinkedListQueue<String> linkedListQueue = new LinkedListQueue<>();
+
+        linkedListQueue.enqueue("one");
+        linkedListQueue.enqueue("two");
+        linkedListQueue.enqueue("three");
+        linkedListQueue.enqueue("four");
+        linkedListQueue.enqueue("five");
+
+        System.out.println(linkedListQueue.dequeue());
+        System.out.println(linkedListQueue.dequeue());
+        System.out.println(linkedListQueue.dequeue());
+        System.out.println(linkedListQueue.dequeue());
+        System.out.println(linkedListQueue.dequeue());
+    }
 }
