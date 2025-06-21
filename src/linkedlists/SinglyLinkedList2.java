@@ -166,6 +166,7 @@ public class SinglyLinkedList2 <V>{
             second = temp;
         }
         this.first.next = null;
+        this.last = first;
         this.first = head;
     }
 
@@ -203,6 +204,7 @@ public class SinglyLinkedList2 <V>{
         singlyLinkedList2.printLinkedList();
 
         singlyLinkedList2.reverseLinkedList();
+        singlyLinkedList2.removeLast();
 
         singlyLinkedList2.printLinkedList();
 
