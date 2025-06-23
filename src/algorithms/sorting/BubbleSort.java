@@ -63,7 +63,4 @@ public class BubbleSort {
             if (!swapped) break; // array is sorted early
         }
     }
-
-
-
 }
