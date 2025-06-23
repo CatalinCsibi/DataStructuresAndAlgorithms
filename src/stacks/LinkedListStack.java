@@ -63,5 +63,31 @@ public class LinkedListStack <V> {
         return itemsAsString.substring(0, itemsAsString.length() - 2) + "]";
     }
 
+    public static void main(String[] args) {
+
+        LinkedListStack<String> linkedListStack = new LinkedListStack<>();
+
+        linkedListStack.push("first");
+        linkedListStack.push("second");
+        linkedListStack.push("third");
+        linkedListStack.push("fourth");
+        linkedListStack.push("fifth");
+        linkedListStack.push("sixth");
+        linkedListStack.push("seventh");
+
+
+
+        System.out.println(linkedListStack.peek());
+        System.out.println(linkedListStack.pop());
+        System.out.println(linkedListStack.pop());
+        System.out.println(linkedListStack.pop());
+        System.out.println(linkedListStack.pop());
+        System.out.println(linkedListStack.pop());
+        System.out.println(linkedListStack.isEmpty());
+
+        System.out.println(linkedListStack);
+
+    }
+
 
 }
