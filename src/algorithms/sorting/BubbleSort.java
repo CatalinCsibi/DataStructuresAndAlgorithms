@@ -5,7 +5,7 @@ public class BubbleSort {
 
     public static void main(String[] args) {
         int[] array = {5, 7, 3, 1, 10, 90, 65, 2};
-        bubbleSort(array);
+        bubbleSort2(array);
 
         for(int i : array) {
             System.out.print(i + " ");
@@ -45,6 +45,22 @@ public class BubbleSort {
                     array[j+1] = temp;
                 }
             }
+        }
+    }
+
+    public static void bubbleSort2(int[] array) {
+        boolean swapped;
+        for (int i = 0; i < array.length; i++) {
+            swapped = false;
+            for (int j = 0; j < array.length - 1 - i; j++) { // reduce comparisons each pass
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            if (!swapped) break; // array is sorted early
         }
     }
 
