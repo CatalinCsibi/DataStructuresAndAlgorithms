@@ -28,7 +28,7 @@ public class MyHashTable2<K, V> {
 
     public void put(K key, V value) {
         var entry = getEntry(key);
-        if(entry != null) {
+        if (entry != null) {
             entry.value = value;
             return;
         }
@@ -37,7 +37,7 @@ public class MyHashTable2<K, V> {
 
     public void remove(K key) {
         var entry = getEntry(key);
-        if(entry == null)
+        if (entry == null)
             throw new IllegalStateException();
 
         getBucket(key).remove(entry);
@@ -46,7 +46,7 @@ public class MyHashTable2<K, V> {
     public V get(K key) {
         var entry = getEntry(key);
 
-        if(entry != null)
+        if (entry != null)
             return entry.value;
 
         return null;
@@ -56,7 +56,7 @@ public class MyHashTable2<K, V> {
         var index = hash(key);
         var bucket = entries[index];
 
-        if(bucket == null)
+        if (bucket == null)
             return entries[index] = new LinkedList<>();
 
         return bucket;
@@ -64,9 +64,9 @@ public class MyHashTable2<K, V> {
 
     private Entry getEntry(K key) {
         var bucket = getBucket(key);
-        if(bucket != null) {
-            for(var entry : bucket) {
-                if(entry.key == key)
+        if (bucket != null) {
+            for (var entry : bucket) {
+                if (entry.key == key)
                     return entry;
             }
         }
@@ -95,5 +95,26 @@ public class MyHashTable2<K, V> {
         String s = stringBuilder.toString();
         s = s.substring(0, s.length() - 2) + "}";
         return s;
+    }
+
+    public static void main(String[] args) {
+
+        MyHashTable2<String, Double> myHashTable2 = new MyHashTable2<>();
+
+        myHashTable2.put("hello", 2.2);
+        myHashTable2.put("salut", 3.3);
+        myHashTable2.put("ciao", 4.4);
+        myHashTable2.put("aici", 5.5);
+        myHashTable2.put("halo", 6.6);
+        myHashTable2.put("halo", 7.6);
+
+        myHashTable2.remove("hello");
+        myHashTable2.remove("salut");
+        myHashTable2.remove("aici");
+
+        System.out.println(myHashTable2.get("halo"));
+
+        System.out.println(myHashTable2);
+
     }
 }
