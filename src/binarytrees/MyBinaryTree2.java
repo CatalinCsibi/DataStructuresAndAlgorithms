@@ -248,4 +248,44 @@ public class MyBinaryTree2 {
         return node.leftChild == null && node.rightChild == null;
     }
 
+    public static void main(String[] args) {
+        MyBinaryTree2 myBinaryTree2 = new MyBinaryTree2();
+
+        myBinaryTree2.insert(8);
+        myBinaryTree2.insert(5);
+        myBinaryTree2.insert(11);
+        myBinaryTree2.insert(9);
+        myBinaryTree2.insert(14);
+        myBinaryTree2.insert(4);
+        myBinaryTree2.insert(7);
+        myBinaryTree2.insert(6);
+        myBinaryTree2.insert(3);
+        myBinaryTree2.insert(1);
+
+        System.out.println(myBinaryTree2.find(6));
+        System.out.println(myBinaryTree2.find(7));
+        System.out.println(myBinaryTree2.find(33));
+
+        System.out.println();
+
+        myBinaryTree2.traversePreOrder();
+
+        System.out.println();
+
+        myBinaryTree2.traverseInOrder();
+
+
+        System.out.println();
+
+        myBinaryTree2.traversePostOrder();
+
+        System.out.println();
+
+        System.out.println(myBinaryTree2.isBinarySearchTree());
+        System.out.println();
+
+        System.out.println(myBinaryTree2.height());
+        System.out.println(myBinaryTree2.min());
+    }
+
 }
