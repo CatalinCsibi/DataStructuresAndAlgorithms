@@ -241,7 +241,7 @@ public class MyBinaryTree2 {
         if(isLeaf(root))
             return 0;
 
-        return 1+ Math.max(height(root.leftChild), height(root.rightChild));
+        return 1 + Math.max(height(root.leftChild), height(root.rightChild));
     }
 
     private boolean isLeaf(Node node) {
