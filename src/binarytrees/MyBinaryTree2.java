@@ -304,6 +304,10 @@ public class MyBinaryTree2 {
 
         System.out.println(myBinaryTree2.height());
         System.out.println(myBinaryTree2.min());
+
+        System.out.println();
+
+        System.out.println(myBinaryTree2.breadthFirstSearch());
     }
 
 }
