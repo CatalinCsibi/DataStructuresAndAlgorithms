@@ -38,12 +38,12 @@ public class ExcelColumnNumber {
     columnTitle is in the range ["A", "FXSHRXW"].*/
 
     public static void main(String[] args) {
-        excelColumnNumber("AB");
+        excelColumnNumber("ZY");
     }
 
     private static void excelColumnNumber(String columnTitle) {
         if (columnTitle.isEmpty() || columnTitle.length() > 7 || !columnTitle.equals(columnTitle.toUpperCase()))
-            return;
+            throw new IllegalArgumentException();
 
         int result = 0;
         for (int i = 0; i < columnTitle.length(); i++) {
