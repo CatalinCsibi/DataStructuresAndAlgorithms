@@ -41,6 +41,15 @@ public class MajorityElement {
                 candidate = num;
             }
             count += (num == candidate) ? 1 : -1;
+
+            // num = 2 -> candidate = 2 -> num == candidate => count = 1
+            // num = 2 -> candidate = 2 -> num == candidate => count = 2
+            // num = 1 -> candidate 2 -> num != candidate => count = 1
+            // num = 1 -> candidate 2 -> num != candidate => count = 0
+            // num = 1 -> candidate 1 -> num == candidate => count = 1
+            // num = 2 -> candidate 1 -> num != candidate => count = 0
+            // num = 2 -> candidate = 2 -> num == candidate => count = 1
+            // return candidate = 2
         }
 
         return candidate; // Guaranteed to be the majority
