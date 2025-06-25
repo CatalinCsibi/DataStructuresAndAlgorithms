@@ -79,6 +79,29 @@ public class SinglyLinkedList2 <V>{
         size--;
     }
 
+    public void removeAt(int index) {
+        if (index < 0 || index >= size)
+            throw new IndexOutOfBoundsException();
+
+        if (index == 0) {
+            removeFirst();
+            return;
+        }
+
+        Node current = first;
+        for (int i = 0; i < index - 1; i++) {
+            current = current.next;
+        }
+
+        Node nodeToRemove = current.next;
+        current.next = nodeToRemove.next;
+
+        if (nodeToRemove == last)
+            last = current;
+
+        size--;
+    }
+
     public boolean contains(V value) {
         if(last != null && last.value == value)
             return true;
@@ -205,6 +228,7 @@ public class SinglyLinkedList2 <V>{
 
         singlyLinkedList2.reverseLinkedList();
         singlyLinkedList2.removeLast();
+        singlyLinkedList2.removeAt(1);
 
         singlyLinkedList2.printLinkedList();
 
