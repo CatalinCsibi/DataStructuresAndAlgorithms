@@ -11,7 +11,12 @@ public class FirstRecurringCharacter {
         System.out.println(firstRecurringCharacter2(array));
     }
 
-    private static int firstRecurringCharacter(int [] numbers) { // O(n)
+/*  Version	                    Time	Space
+    firstRecurringCharacter  	O(n)	O(n)
+    firstRecurringCharacter2	O(n²)	O(1)
+*/
+
+    private static int firstRecurringCharacter(int [] numbers) {
         Set<Integer> set = new HashSet<>();
         for (int number : numbers) {
             if (set.contains(number)) {
@@ -23,7 +28,7 @@ public class FirstRecurringCharacter {
         return -1;
     }
 
-    private static int firstRecurringCharacter2(int [] numbers) { // O(n^2)
+    private static int firstRecurringCharacter2(int [] numbers) {
         for(int i = 0; i < numbers.length-1 ; i++) {
             for(int j = i+1; j < numbers.length; j++) {
                 if(numbers[i] == numbers[j])
