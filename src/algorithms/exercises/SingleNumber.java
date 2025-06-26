@@ -29,6 +29,17 @@ public class SingleNumber {
         System.out.println(singleNumber(array));
     }
 
+
+/*  Key XOR properties:
+
+    a ^ a = 0 — a number XOR itself is 0
+
+    a ^ 0 = a — a number XOR 0 is the number itself
+
+    XOR is commutative and associative:
+
+    a ^ b ^ c = c ^ b ^ a
+*/
     public static int singleNumber(int[] nums) {
         int result = 0;
         for (int num : nums) {
