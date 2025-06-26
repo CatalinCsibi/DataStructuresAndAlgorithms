@@ -19,8 +19,6 @@ public class ValidAnagram {
 
     Output: false
 
-
-
     Constraints:
 
     1 <= s.length, t.length <= 5 * 104
