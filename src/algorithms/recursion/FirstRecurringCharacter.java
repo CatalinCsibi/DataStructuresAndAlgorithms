@@ -8,15 +8,26 @@ public class FirstRecurringCharacter {
     public static void main(String[] args) {
         int[] array = {2, 4, 7, 2, 8};
         System.out.println(firstRecurringCharacter(array));
+        System.out.println(firstRecurringCharacter2(array));
     }
 
-    private static int firstRecurringCharacter(int [] numbers) {
+    private static int firstRecurringCharacter(int [] numbers) { // O(n)
         Set<Integer> set = new HashSet<>();
         for (int number : numbers) {
             if (set.contains(number)) {
                 return number;
             } else {
                 set.add(number);
+            }
+        }
+        return -1;
+    }
+
+    private static int firstRecurringCharacter2(int [] numbers) { // O(n^2)
+        for(int i = 0; i < numbers.length-1 ; i++) {
+            for(int j = i+1; j < numbers.length; j++) {
+                if(numbers[i] == numbers[j])
+                    return numbers[i];
             }
         }
         return -1;
