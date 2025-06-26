@@ -1,4 +1,4 @@
-package algorithms.exercies;
+package algorithms.exercises;
 
 public class MajorityElement {
 
