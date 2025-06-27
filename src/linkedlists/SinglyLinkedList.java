@@ -78,6 +78,9 @@ public class SinglyLinkedList<E> {
     }
 
     public void removeAt(int index) {
+        if(index < 0 || index > size-1)
+            throw new IndexOutOfBoundsException();
+
         if(last != null && index == size-1) {
             deleteLast();
         } else if(first != null && index == 0) {
