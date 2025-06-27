@@ -27,15 +27,17 @@ public class LinkedListQueue <V>{
         size++;
     }
 
-    public V dequeue() {
-        if(isEmpty())
-            throw new IllegalStateException("Queue is empty, can't dequeue last item");
+    public Object dequeue() {
+        if(first == null)
+            throw new IllegalStateException();
 
-        V value = first.value;
-        first = first.next;
-        size--;
+        var temp = first.value;
+        if(first == last)
+            first = last = null;
+        else
+            first = first.next;
 
-        return value;
+        return temp;
     }
 
 
