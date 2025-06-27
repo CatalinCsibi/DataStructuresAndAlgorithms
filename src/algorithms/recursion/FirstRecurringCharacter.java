@@ -8,7 +8,7 @@ public class FirstRecurringCharacter {
     public static void main(String[] args) {
         int[] array = {2, 4, 7, 2, 8};
         System.out.println(firstRecurringCharacter(array));
-        System.out.println(firstRecurringCharacter2(array));
+        System.out.println(firstRecurringCharacter3(array));
     }
 
 /*  Version	                    Time	Space
@@ -17,6 +17,16 @@ public class FirstRecurringCharacter {
 */
 
     private static int firstRecurringCharacter(int [] numbers) {
+        Set<Integer> integers = new HashSet<>();
+        for(int num : numbers) {
+            if(!integers.add(num)) {
+                return num;
+            }
+        }
+        return -1;
+    }
+
+    private static int firstRecurringCharacter2(int [] numbers) {
         Set<Integer> set = new HashSet<>();
         for (int number : numbers) {
             if (set.contains(number)) {
@@ -28,7 +38,7 @@ public class FirstRecurringCharacter {
         return -1;
     }
 
-    private static int firstRecurringCharacter2(int [] numbers) {
+    private static int firstRecurringCharacter3(int [] numbers) {
         for(int i = 0; i < numbers.length-1 ; i++) {
             for(int j = i+1; j < numbers.length; j++) {
                 if(numbers[i] == numbers[j])
