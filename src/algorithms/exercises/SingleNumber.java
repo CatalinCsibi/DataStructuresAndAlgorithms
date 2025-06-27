@@ -49,6 +49,15 @@ public class SingleNumber {
     }
 
     private static int getSingleNumber(int [] array) {
+        Set<Integer> set = new HashSet<>();
+        for(int num : array) {
+            if(!set.add(num))
+                set.remove(num);
+        }
+        return set.iterator().next();
+    }
+
+    private static int getSingleNumber2(int [] array) {
         Set<Integer> integers = new HashSet<>();
         for(int number : array) {
             if(integers.contains(number)) {
