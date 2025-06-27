@@ -88,6 +88,7 @@ public class SinglyLinkedList<E> {
             while (current != last) {
                 if(count == index-1) {
                     current.next = current.next.next;
+                    size--;
                     break;
                 }
                 count++;
