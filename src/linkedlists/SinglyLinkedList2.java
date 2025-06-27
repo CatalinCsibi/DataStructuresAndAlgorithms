@@ -31,18 +31,11 @@ public class SinglyLinkedList2 <V>{
 
     public void addLast(V value) {
         var node = new Node(value);
-        if(isEmpty()) {
+        if(first == null)
             first = last = node;
-        } else {
-            var current = first;
-            while (current != null) {
-                if(current.next == null) {
-                    current.next = node;
-                    last = node;
-                    break;
-                }
-                current = current.next;
-            }
+        else {
+            last.next = node;
+            last = node;
         }
         size++;
     }
