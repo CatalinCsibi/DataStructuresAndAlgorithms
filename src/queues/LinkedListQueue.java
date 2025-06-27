@@ -37,6 +37,7 @@ public class LinkedListQueue <V>{
         else
             first = first.next;
 
+        size--;
         return temp;
     }
 
