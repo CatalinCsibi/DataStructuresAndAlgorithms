@@ -77,6 +77,24 @@ public class SinglyLinkedList<E> {
         size--;
     }
 
+    public void removeAt(int index) {
+        if(last != null && index == size-1) {
+            deleteLast();
+        } else if(first != null && index == 0) {
+            deleteFirst();
+        } else {
+            var current = first;
+            int count = 0;
+            while (current != last) {
+                if(count == index-1) {
+                    current.next = current.next.next;
+                    break;
+                }
+                count++;
+            }
+        }
+    }
+
     public boolean contains(E item) {
         var node = first;
         while (node != null) {
