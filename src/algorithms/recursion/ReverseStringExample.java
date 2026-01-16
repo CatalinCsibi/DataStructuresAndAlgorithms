@@ -6,6 +6,7 @@ public class ReverseStringExample {
     public static void main(String[] args) {
         System.out.println(reverseStringIterative("olleH"));
         System.out.println(reverseStringRecursive("olleH"));
+        System.out.println(reverseString("olleH"));
     }
 
     private static String reverseStringRecursive(String s) {
@@ -24,5 +25,9 @@ public class ReverseStringExample {
             stringBuilder.append(chars[i]);
         }
         return stringBuilder.toString();
+    }
+
+    private static String reverseString(String s) {
+        return new StringBuilder(s).reverse().toString();
     }
 }
