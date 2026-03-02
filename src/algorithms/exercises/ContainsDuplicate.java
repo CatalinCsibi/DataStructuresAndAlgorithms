@@ -1,5 +1,6 @@
 package algorithms.exercises;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,6 +38,8 @@ public class ContainsDuplicate {
 
         System.out.println(containsDuplicate(nums1));
         System.out.println(containsDuplicate(nums2));
+        System.out.println(containsDuplicate2(nums1));
+        System.out.println(containsDuplicate2(nums2));
 
     }
 
@@ -45,6 +48,16 @@ public class ContainsDuplicate {
         for (int num : array) {
             if (!seen.add(num)) // add returns false if already exists
                 return true;
+        }
+        return false;
+    }
+
+    // if space is important
+    private static boolean containsDuplicate2(int[] nums) {
+        Arrays.sort(nums);
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1]) return true;
         }
         return false;
     }
