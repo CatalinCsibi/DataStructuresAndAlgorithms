@@ -6,94 +6,65 @@ public class MyArray2 <E>{
     private int count;
 
     public MyArray2() {
-        items = new Object[5];
+        this.items = new Object[5];
     }
 
     public MyArray2(int initialCapacity) {
-        items = new Object[initialCapacity];
+        this.items = new Object[initialCapacity];
     }
 
-    public void insert(E value) {
-        if(isFull())
+    public void insert(E item) {
+        if(count == items.length) {
             resizeArray();
-        
-        items[count++] = value;
-    }
-    
-    public void removeFirst() {
-        if(isEmpty())
-            throw new IllegalStateException();
-        
-        for(int i = 0; i < count-1; i++) {
-            items[i] = items[i + 1];
         }
-        count--;
+        items[count++] = item;
     }
-    
+
     public void removeLast() {
-        if(isEmpty())
-            throw new IllegalStateException();
-        
-        items[--count] = 0;
+        if(isEmpty()) {
+            throw new IllegalStateException("Array is empty.");
+        }
+        items[count--] = null;
     }
-    
+
+    public void removeFirst() {
+        if(isEmpty()) {
+            throw new IllegalStateException("Array is empty.");
+        }
+
+        for(int i = 0; i < count -1; i++) {
+            items[i] = items[i+1];
+        }
+        items[count--] = null;
+    }
+
+    public void reverseArray() {
+        if(isEmpty())
+            throw new IllegalStateException("Array is empty");
+
+        int last = count - 1;
+
+        for(int i = 0; i < count / 2; i++) {
+            Object firstItem = items[i];
+            items[i] = items[last];
+            items[last--] = firstItem;
+        }
+    }
+
     public boolean isEmpty() {
         return count == 0;
     }
-    
-    public void reverseArray() {
-        Object[] reversedArray = new Object[items.length];
-        
-        int index = 0;
-        
-        for(int i = count - 1; i >=0; i--) {
-            reversedArray[index++] = items[i];
-        }
-        items = reversedArray;
-    }
-    
-    public Object get(int index) {
-        if(isOutOfBounds(index))
-            throw new IndexOutOfBoundsException();
 
-        return items[index];
+    public int size() {
+        return count;
     }
 
-    public int indexOf(E value) {
-        if(isEmpty())
-            return -1;
-        
-        for(int i = 0; i < count; i++) {
-            if(items[i] == value)
-                return i;
-        }
-        return -1;
-    }
-    
-    public void removeAt(int index) {
-        if(isOutOfBounds(index))
-            throw new IndexOutOfBoundsException();
-
-        for(int i = index; i < count-1; i++) {
-            items[i] = items[i+1];
-        }
-    }
-
-    private boolean isOutOfBounds(int index) {
-        return index < 0 || index > count - 1;
-    }
-    
     private void resizeArray() {
-        Object[] newItems = new Object[items.length * 2];
-        
-        for(int i = 0; i < count; i++) {
-            newItems[i] = items[i];
+        Object[] newArray = new Object[items.length* 2];
+        for (int i = 0; i < count; i++) {
+            newArray[i] = items[i];
         }
-        items = newItems;
-    }
-    
-    private boolean isFull() {
-        return count == items.length;
+        items = newArray;
     }
 
 
