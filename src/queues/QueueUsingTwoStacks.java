@@ -12,22 +12,41 @@ public class QueueUsingTwoStacks <E> {
     }
 
     public E dequeue() {
-        if(isEmpty())
-            throw new IllegalStateException();
-
-        if(stack2.isEmpty())
-            moveStack1ToStack2();
-
+        moveStack1ToStack2();
         return stack2.pop();
     }
 
     private void moveStack1ToStack2() {
-        while (!stack1.isEmpty())
-            stack2.push(stack1.pop());
+        if(stack2.isEmpty()) {
+            while (!stack1.isEmpty()) {
+                stack2.push(stack1.pop());
+            }
+        }
     }
 
-    public boolean isEmpty(){
-        return stack1.isEmpty() && stack2.isEmpty();
+    public static void main(String[] args) {
+        QueueUsingTwoStacks<String> queueUsingTwoStacks = new QueueUsingTwoStacks<>();
+
+        queueUsingTwoStacks.enqueue("first");
+        queueUsingTwoStacks.enqueue("second");
+        queueUsingTwoStacks.enqueue("third");
+        queueUsingTwoStacks.enqueue("fourth");
+        queueUsingTwoStacks.enqueue("fifth");
+        queueUsingTwoStacks.enqueue("sixth");
+        queueUsingTwoStacks.enqueue("seventh");
+        queueUsingTwoStacks.enqueue("eighth");
+        queueUsingTwoStacks.enqueue("ninth");
+
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
+        System.out.println(queueUsingTwoStacks.dequeue());
     }
+
 
 }

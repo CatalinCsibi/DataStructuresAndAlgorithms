@@ -1,0 +1,72 @@
+Counting Sort
+What it is:
+A non-comparison sorting algorithm that works by counting the number of occurrences of each unique element.
+
+How it works:
+
+Find the maximum value max in the array.
+
+Create a "count" array of size max + 1.
+
+Count how many times each element appears and store it in the count array.
+
+Modify the count array to store the position of each element in the output array.
+
+Build the output array by placing elements at their correct positions.
+
+When to use:
+When you have integers (or things that can be mapped to integers) in a known, small range.
+
+Time complexity:
+O(n + k), where n is the number of elements and k is the range of input values.
+
+Space complexity:
+O(k) for the counting array.
+
+Limitations:
+
+Only works with integers or things that can be mapped to integers.
+
+The range k shouldn't be too large; otherwise, it uses a lot of space.
+
+Radix Sort
+What it is:
+A sorting algorithm that processes numbers digit by digit, starting from the least significant digit (LSD) to the most significant digit (MSD), using a stable sort (usually Counting Sort) as a subroutine.
+
+How it works:
+
+Sort numbers by their least significant digit using Counting Sort.
+
+Move to the next more significant digit and sort again.
+
+Repeat until all digits have been processed.
+
+When to use:
+When sorting large sets of integers or strings of fixed length, especially when comparison-based sorting is inefficient.
+
+Time complexity:
+O(d * (n + k)), where
+
+n = number of elements
+
+d = number of digits in the largest number
+
+k = range of digit values (usually 10 for decimal digits)
+
+Space complexity:
+O(n + k) for the counting sort step each time.
+
+Advantages:
+
+Can sort very large lists efficiently if numbers are not too large in digits.
+
+Works well when the number of digits d is small compared to n.
+
+Quick Summary:
+Feature	Counting Sort	Radix Sort
+Type	Counting occurrences	Digit-by-digit sorting
+Works on	Integers with small range	Integers or fixed-length strings
+Time complexity	O(n + k)	O(d * (n + k))
+Space complexity	O(k)	O(n + k)
+Stable?	Yes	Yes (if stable sort used internally)
+Use case	Small range integer sorting	Large integer/string sorting by digits

@@ -1,0 +1,39 @@
+/////Dijkstra's Algorithm
+
+✔ Purpose:
+Find the shortest path from a source to all other nodes in a graph with non-negative edge weights.
+
+✔ Time Complexity:
+
+Using Min Heap (PriorityQueue): O(E + V log V)
+
+✔ Key Points:
+
+Cannot handle negative edge weights.
+
+More efficient than Bellman-Ford in most practical cases.
+
+Greedy algorithm.
+
+✔ Use Case Example:
+Google Maps routing (where distances are always positive).
+
+/////Bellman-Ford Algorithm
+
+✔ Purpose:
+Find the shortest path from a source to all other nodes, even when negative edge weights exist.
+
+✔ Time Complexity:
+
+O(V * E)
+
+✔ Key Points:
+
+Can detect negative weight cycles.
+
+Works for graphs with negative edges.
+
+Slower than Dijkstra.
+
+✔ Use Case Example:
+Financial arbitrage detection (where profits/losses could be negative).

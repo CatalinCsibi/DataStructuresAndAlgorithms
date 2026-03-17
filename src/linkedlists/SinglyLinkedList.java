@@ -1,5 +1,7 @@
 package linkedlists;
 
+import java.util.Stack;
+
 public class SinglyLinkedList<E> {
 
     private Node first;
@@ -75,6 +77,28 @@ public class SinglyLinkedList<E> {
         size--;
     }
 
+    public void removeAt(int index) {
+        if(index < 0 || index > size-1)
+            throw new IndexOutOfBoundsException();
+
+        if(last != null && index == size-1) {
+            deleteLast();
+        } else if(first != null && index == 0) {
+            deleteFirst();
+        } else {
+            var current = first;
+            int count = 0;
+            while (current != last) {
+                if(count == index-1) {
+                    current.next = current.next.next;
+                    size--;
+                    break;
+                }
+                count++;
+            }
+        }
+    }
+
     public boolean contains(E item) {
         var node = first;
         while (node != null) {
@@ -119,5 +143,44 @@ public class SinglyLinkedList<E> {
         return size == 0;
     }
 
+    public void printLinkedList() {
+        var node = first;
+        while (node != null) {
+            System.out.print(node.value + " ");
+            node = node.next;
+        }
+        System.out.println();
+    }
 
+    public SinglyLinkedList<E> reverse() {
+        Stack<E> stack = new Stack<>();
+        var node = first;
+            for (int i = 0; i < size; i++) {
+                if(node != null) {
+                    stack.add(node.value);
+                }
+                node = node.next;
+        }
+        SinglyLinkedList<E> singlyLinkedList = new SinglyLinkedList<>();
+            while (!stack.isEmpty()) {
+                singlyLinkedList.addLast(stack.pop());
+            }
+        return singlyLinkedList;
+    }
+
+    public void reverse2() {
+        if(first == null || first.next == null)
+            return;
+
+        var head = first;
+        var second = head.next;
+        while (second != null) {
+            var temp = second.next;
+            second.next = head;
+            head = second;
+            second = temp;
+        }
+        this.first.next = null;
+        this.first = head;
+    }
 }

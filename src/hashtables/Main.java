@@ -8,27 +8,6 @@ import java.util.Set;
 public class Main {
 
 
-    public static void main(String[] args) {
-
-        MyHashTable2<String, Double> myHashTable2 = new MyHashTable2<>();
-
-        myHashTable2.put("hello", 2.2);
-        myHashTable2.put("salut", 3.3);
-        myHashTable2.put("ciao", 4.4);
-        myHashTable2.put("aici", 5.5);
-        myHashTable2.put("halo", 6.6);
-        myHashTable2.put("halo", 7.6);
-
-        myHashTable2.remove("hello");
-        myHashTable2.remove("salut");
-        myHashTable2.remove("aici");
-
-        System.out.println(myHashTable2.get("halo"));
-
-        System.out.println(myHashTable2);
-
-    }
-
     private static char findFirstNonRepeatingCharacter(String string) {
         string = string.replace(" ", "");
 

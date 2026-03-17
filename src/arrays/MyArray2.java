@@ -1,84 +1,111 @@
 package arrays;
 
-public class MyArray2 <E>{
+public class MyArray2 {
 
-    private Object[] items;
-    private int count;
+    public int length = 0;
+
+    private int index = 0;
+
+    private int[] numbers;
 
     public MyArray2() {
-        this.items = new Object[5];
+        this.numbers = new int [10];
+        this.length = 10;
+    }
+    public MyArray2(int length) {
+        this.numbers = new int [length];
+        this.length = length;
     }
 
-    public MyArray2(int initialCapacity) {
-        this.items = new Object[initialCapacity];
+    public void insert(int number) {
+        if(index == length) {
+            int[] newArray = new int[numbers.length * 2];
+            System.arraycopy(numbers, 0, newArray, 0, numbers.length);
+            numbers = newArray;
+            length = numbers.length;
+        }
+
+        numbers[index] = number;
+        index++;
     }
 
-    public void insert(E item) {
-        if(count == items.length) {
-            resizeArray();
+    public void removeAt(int index) {
+        if(index < this.index && index >= 0) {
+            int number = numbers[index];
+            int[] newArray = new int[numbers.length - 1];
+            int newArrayIndex = 0;
+            for (int i = 0; i < this.index; i++) {
+                if(numbers[i] == number) {
+                    continue;
+                }
+                newArray[newArrayIndex] = numbers[i];
+                newArrayIndex++;
+            }
+            this.index--;
+            this.length--;
+            numbers = newArray;
+        } else {
+            throw new IndexOutOfBoundsException(index);
         }
-        items[count++] = item;
     }
 
-    public void removeLast() {
-        if(isEmpty()) {
-            throw new IllegalStateException("Array is empty.");
+    public int indexOf(int number) {
+        for(int i = 0; i < index; i++ ){
+            if (numbers[i] == number) {
+                return i;
+            }
         }
-        items[count--] = null;
+        return -1;
     }
 
-    public void removeFirst() {
-        if(isEmpty()) {
-            throw new IllegalStateException("Array is empty.");
-        }
+    public int getMaxNumber() {
+        if(index > 0) {
+            int max = numbers[0];
 
-        for(int i = 0; i < count -1; i++) {
-            items[i] = items[i+1];
+            for (int number : numbers) {
+                if(number > max) {
+                    max = number;
+                }
+            }
+            return max;
         }
-        items[count--] = null;
+        System.out.println("Array is empty. Cannot get max number.");
+        return -1;
+
+    }
+
+    public void printArray() {
+        for (int i = 0; i < index; i++) {
+            System.out.print(numbers[i] + " ");
+        }
+        System.out.println();
     }
 
     public void reverseArray() {
-        if(isEmpty())
-            throw new IllegalStateException("Array is empty");
+        if(index > 0) {
+            int [] newNumbers = new int[numbers.length];
+            int lastIndex = index - 1;
 
-        int last = count - 1;
-
-        for(int i = 0; i < count / 2; i++) {
-            Object firstItem = items[i];
-            items[i] = items[last];
-            items[last--] = firstItem;
+            for(int i = 0; i < index; i++) {
+                newNumbers[i] = numbers[lastIndex];
+                lastIndex--;
+            }
+            numbers = newNumbers;
+        } else {
+            System.out.println("Array is empty. Cannot reverse.");
         }
     }
 
-    public boolean isEmpty() {
-        return count == 0;
-    }
-
-    public int size() {
-        return count;
-    }
-
-    private void resizeArray() {
-        Object[] newArray = new Object[items.length* 2];
-        for (int i = 0; i < count; i++) {
-            newArray[i] = items[i];
+    public void intersect(MyArray2 myArray) {
+        for(int i = 0; i < myArray.index; i++) {
+            for(int j = 0; j < index; j++) {
+                if(myArray.numbers[i] == numbers[j]) {
+                    System.out.print(myArray.numbers[i] + " ");
+                }
+            }
         }
-        items = newArray;
+        System.out.println();
     }
 
-
-
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("[");
-        for (int i = 0; i < count; i++) {
-            if (i == count - 1)
-                stringBuilder.append(items[i]).append("]");
-            else
-                stringBuilder.append(items[i]).append(", ");
-        }
-        return stringBuilder.toString();
-    }
 }
+
