@@ -1,5 +1,8 @@
 package algorithms.exercises;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class MissingBiggestNumber {
 
 //    Write a function:
@@ -21,7 +24,7 @@ public class MissingBiggestNumber {
 //    each element of array A is an integer within the range [−1,000,000..1,000,000].
 
     public static void main(String[] args) {
-        System.out.println(solution(new int[]{1, 3, 6, 4, 1, 2}));
+        System.out.println(solutionWithSet(new int[]{1, 2, 3}));
     }
 
 
@@ -42,6 +45,24 @@ public class MissingBiggestNumber {
         }
 
         return n + 1;
+    }
+
+    public static int solutionWithSet(int[] A) {
+        Set<Integer> set = new HashSet<>();
+
+        for (int x : A) {
+            if (x > 0) {
+                set.add(x);
+            }
+        }
+
+        for (int i = 1; i <= A.length + 1; i++) {
+            if (!set.contains(i)) {
+                return i;
+            }
+        }
+
+        return 1;
     }
 
 
